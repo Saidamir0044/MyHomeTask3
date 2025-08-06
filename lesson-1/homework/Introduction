@@ -1,0 +1,120 @@
+1. What is Power BI, and what are its three main components?
+Power BI is Microsoft’s business intelligence platform used to transform raw data into interactive dashboards and reports.
+
+Three main components:
+
+Power BI Desktop – for creating reports on your PC
+
+Power BI Service – for publishing, sharing, and collaborating in the cloud
+
+Power BI Mobile – for accessing reports on smartphones and tablets
+
+2. Name two business use cases for Power BI dashboards.
+Sales Performance Monitoring – visualize KPIs like revenue, conversion rates, and top-selling products.
+
+Customer Support Analytics – track ticket resolution times, customer satisfaction, and agent performance.
+
+3. How do you download and install Power BI Desktop?
+Visit: https://powerbi.microsoft.com/desktop
+
+Click "Download"
+
+Choose from Microsoft Store or direct download (MSI installer)
+
+Install the application and launch it
+
+4. What is the difference between Power BI Desktop and Power BI Service?
+Feature	Power BI Desktop	Power BI Service
+Usage	Report development tool (local)	Online sharing and collaboration
+File Storage	.pbix file	Stored in Power BI cloud workspaces
+Data Refresh	Manual	Supports scheduled refreshes
+Sharing	Limited	Extensive (workspaces, dashboards)
+
+5. What file extension does a Power BI project use?
+.pbix
+
+6. Explain the role of Power Query in Power BI.
+Power Query is used to connect to data sources, clean, transform, and load data into Power BI. It provides a no-code/low-code interface for shaping data before analysis.
+
+7. Why would a business prefer Power BI over Excel for reporting?
+Interactive visualizations vs static tables
+
+Automated and scheduled data refreshes
+
+Strong security, row-level access control
+
+Better scalability for large datasets
+
+Centralized dashboards for all teams
+
+8. Describe one limitation of the free version of Power BI.
+You cannot share reports with others or collaborate unless you upgrade to Power BI Pro.
+
+9. What is a "published report" in Power BI Service?
+A published report is a Power BI Desktop report (.pbix) uploaded to the Power BI Service to enable online viewing, interaction, and sharing.
+
+10. How does Power BI Mobile enhance accessibility?
+It allows users to:
+
+View dashboards and KPIs on-the-go
+
+Receive alerts and notifications
+
+Interact with visuals using touch
+
+Make data-driven decisions anywhere, anytime
+
+11. Compare Power BI with Tableau—pros and cons.
+Feature	Power BI	Tableau
+Cost	Cheaper (especially with M365)	More expensive
+Integration	Deep with Microsoft ecosystem	Strong with multiple sources
+Learning Curve	Easier for Excel users	Slightly steeper
+Performance	Slight edge in large datasets	Often better in visualization speed
+Visuals	Modern but slightly limited	More flexible and creative
+
+12. Explain how Power BI integrates with Azure services.
+Azure SQL Database and Synapse as data sources
+
+Azure Data Lake for big data storage
+
+Azure Active Directory for identity/security
+
+Azure Machine Learning for predictive analytics
+
+Azure Blob Storage for raw file access
+
+13. What are "gateways" in Power BI, and when are they needed?
+Gateways are bridges between Power BI cloud and on-premises data sources.
+Used when:
+
+Data resides in a local SQL Server, Excel, etc.
+
+You want to enable scheduled refreshes from local files
+
+Types:
+
+Personal Gateway – single user
+
+Standard Gateway – shared for enterprise use
+
+14. How would you convince a company to adopt Power BI? (ROI argument)
+Reduces time spent on manual reporting → cost savings
+
+Improves decision-making via real-time dashboards → faster responses
+
+Scales across departments → long-term value
+
+Integrates seamlessly with existing Microsoft stack → low transition cost
+
+Cloud-based, secure, and collaborative → modern BI solution
+
+15. What security features does Power BI offer for sensitive data?
+Row-Level Security (RLS) – restricts data based on user identity
+
+Azure Active Directory integration – manages authentication
+
+Data encryption at rest and in transit
+
+Workspace permissions and role-based access
+
+Sensitivity labels (Microsoft Purview) for data classification
