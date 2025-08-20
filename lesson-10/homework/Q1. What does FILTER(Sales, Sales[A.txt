@@ -1,0 +1,101 @@
+Q1. What does FILTER(Sales, Sales[Amount] > 1000) return?
+
+It returns a table containing only the rows from Sales where Amount > 1000.
+
+Q2. Write a measure High Sales that sums Amount where Amount > 1000 using FILTER.
+High Sales =
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(Sales, Sales[Amount] > 1000)
+)
+
+Q3. How does ALLEXCEPT(Sales, Sales[Region]) differ from ALL(Sales)?
+
+ALL(Sales) removes all filters from the Sales table.
+
+ALLEXCEPT(Sales, Sales[Region]) removes all filters except Region.
+
+Q4. Use SWITCH to categorize Amount.
+Category =
+SWITCH(
+    TRUE(),
+    Sales[Amount] > 1000, "High",
+    Sales[Amount] >= 500 && Sales[Amount] <= 1000, "Medium",
+    "Low"
+)
+
+Q5. What is the purpose of ALLSELECTED?
+
+ALLSELECTED returns all rows visible after slicer selections but ignores filters applied directly in the visual. Useful for percentage calculations relative to slicers.
+
+Q6. Write a measure Regional Sales % showing each sale’s contribution to its region’s total.
+Regional Sales % =
+DIVIDE(
+    SUM(Sales[Amount]),
+    CALCULATE(SUM(Sales[Amount]), ALLEXCEPT(Sales, Sales[Region]))
+)
+
+Q7. Create a dynamic measure using SWITCH to toggle between SUM, AVERAGE, and COUNT of Amount.
+Dynamic Measure =
+SWITCH(
+    SELECTEDVALUE(Metrics[Metric]),
+    "SUM", SUM(Sales[Amount]),
+    "AVERAGE", AVERAGE(Sales[Amount]),
+    "COUNT", COUNT(Sales[Amount])
+)
+
+Q8. Use FILTER inside CALCULATE to exclude "Furniture" sales.
+Exclude Furniture Sales =
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(Products, Products[Category] <> "Furniture")
+)
+
+Q9. Why might ALLSELECTED behave unexpectedly in a pivot table?
+
+Because ALLSELECTED depends on slicers and filters applied outside the visual.
+In a pivot table, visual-level filters may override slicer context, causing unexpected results.
+
+Q10. Write a measure that calculates total sales and ignores filters from Region.
+Total Sales Ignore Region =
+CALCULATE(SUM(Sales[Amount]), ALL(Sales[Region]))
+
+Q11. Optimize High Sales measure.
+
+Instead of using FILTER, use a Boolean expression:
+
+High Sales Optimized =
+CALCULATE(
+    SUM(Sales[Amount]),
+    Sales[Amount] > 1000
+)
+
+Q12. Write a measure Top 2 Products using TOPN and FILTER.
+Top 2 Products =
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        TOPN(
+            2,
+            SUMMARIZE(Sales, Sales[ProductID], "TotalSales", SUM(Sales[Amount])),
+            [TotalSales], DESC
+        ),
+        TRUE()
+    )
+)
+
+Q13. Use ALLSELECTED with no parameters to respect slicers but ignore visual-level filters.
+Measure Example =
+CALCULATE(
+    SUM(Sales[Amount]),
+    ALLSELECTED()
+)
+
+Q14. Debug: A SWITCH measure returns incorrect values when fields are added to a matrix visual.
+
+This happens because SWITCH evaluates row context differently in a matrix.
+Fix: use SELECTEDVALUE or adjust the logic to handle multiple values.
+
+Q15. Simulate a "reset filters" button using ALL in a measure.
+Reset Filters Sales =
+CALCULATE(SUM(Sales[Amount]), ALL(Sales))
